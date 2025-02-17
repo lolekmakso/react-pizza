@@ -21,7 +21,7 @@ export const Home = () => {
   }, []);
 
   return (
-    <>
+    <div className="container">
       <div className="content__top">
         <Categories />
         <Sort />
@@ -32,6 +32,6 @@ export const Home = () => {
           ? [...new Array(6)].map((_, index) => <Skeleton key={index} />)
           : items.map((pizza) => <PizzaBlock key={pizza.id} {...pizza} />)}
       </div>
-    </>
+    </div>
   );
 };

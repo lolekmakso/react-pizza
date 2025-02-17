@@ -1,8 +1,22 @@
 @import "../variables";
 
 .categories {
+  @media (max-width: 1280px) {
+    margin-bottom: 20px;
+  }
+
   ul {
     display: flex;
+
+    @media (max-width: 992px) {
+      overflow-x: auto;
+      white-space: nowrap;
+
+      &::-webkit-scrollbar,
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
 
     li {
       background-color: #f9f9f9;
@@ -13,6 +27,10 @@
       cursor: pointer;
       transition: background-color 0.1s ease-in-out;
       @include noselect();
+
+      @media (max-width: 992px) {
+        padding: 10px 30px;
+      }
 
       &:hover {
         background-color: darken(#f9f9f9, 2%);

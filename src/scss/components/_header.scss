@@ -12,9 +12,14 @@
 
   &__logo {
     display: flex;
+    align-items: center;
 
     img {
       margin-right: 15px;
+
+      @media (max-width: 578px) {
+        margin-right: 7px;
+      }
     }
 
     h1 {
@@ -23,10 +28,18 @@
       letter-spacing: 1%;
       text-transform: uppercase;
       font-weight: 800;
+
+      @media (max-width: 578px) {
+        font-size: 20px;
+      }
     }
 
     p {
       color: #7b7b7b;
+
+      @media (max-width: 578px) {
+        display: none;
+      }
     }
   }
 }
