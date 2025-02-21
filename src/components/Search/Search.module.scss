@@ -22,3 +22,17 @@
   left: 12px;
   top: 10px;
 }
+
+.cleanIcon {
+  width: 20px;
+  height: 20px;
+  opacity: 0.4;
+  position: absolute;
+  right: 12px;
+  top: 15px;
+
+  &:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+}
