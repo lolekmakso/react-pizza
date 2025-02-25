@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import styles from "./Search.module.scss";
 import { SearchContext } from "../../App";
+import styles from "./Search.module.scss";
 
 export const Search = () => {
   const { searchValue, setSearchValue } = useContext(SearchContext);
