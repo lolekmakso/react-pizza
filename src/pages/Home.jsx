@@ -22,11 +22,11 @@ export const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const onChangeCategory = (id) => {
-    dispatch(setCurrentPage(id));
+    dispatch(setCategoryId(id));
   };
 
   const onChangePage = (number) => {
-    dispatch(setCategoryId(number));
+    dispatch(setCurrentPage(number));
   };
 
   useEffect(() => {
