@@ -3,11 +3,14 @@ import debounce from "lodash.debounce";
 import { useDispatch } from "react-redux";
 import { setSearchValue } from "../../redux/slices/filterSlice";
 import styles from "./Search.module.scss";
+import { useLocation } from "react-router";
 
 export const Search = () => {
   const dispatch = useDispatch();
   const [value, setValue] = useState("");
   const inputRef = useRef();
+
+  const location = useLocation();
 
   const onClickClear = () => {
     dispatch(setSearchValue(""));
@@ -26,6 +29,10 @@ export const Search = () => {
     setValue(event.target.value);
     updateSearchValue(event.target.value);
   };
+
+  if (location.pathname === "/cart") {
+    return null;
+  }
 
   return (
     <div className={styles.root}>
