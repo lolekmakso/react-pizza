@@ -1,8 +1,12 @@
-import { useState } from "react";
+type CategoriesProps = {
+  value: number;
+  onChangeCategory: any;
+};
 
-export function Categories({ value, onChangeCategory }) {
-  // const [activeIndex, setActiveIndex] = useState(0);
-
+export const Categories: React.FC<CategoriesProps> = ({
+  value,
+  onChangeCategory,
+}) => {
   const categories = [
     "Все",
     "Мясные",
@@ -27,4 +31,4 @@ export function Categories({ value, onChangeCategory }) {
       </ul>
     </div>
   );
-}
+};
