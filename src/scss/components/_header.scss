@@ -6,8 +6,13 @@
 
   .container {
     display: flex;
+    gap: 10px;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 992px) {
+      flex-wrap: wrap;
+    }
   }
 
   &__logo {
@@ -40,6 +45,14 @@
       @media (max-width: 578px) {
         display: none;
       }
+    }
+  }
+
+  &__search {
+    @media (max-width: 992px) {
+      order: 3; // Помещаем в конец
+      width: 100%;
+      margin-top: 20px;
     }
   }
 }

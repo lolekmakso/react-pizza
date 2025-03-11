@@ -25,11 +25,13 @@ export function Header() {
           </div>
         </Link>
 
-        <Search />
+        <div className="header__search">
+          <Search />
+        </div>
 
         <div className="header__cart">
           <Link to="/cart" className="button button--cart">
-            <span>{totalPrice}</span>
+            <span>{totalPrice} $</span>
             <div className="button__delimiter"></div>
             <svg
               width="18"
