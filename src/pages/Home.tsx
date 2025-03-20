@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import qs from "qs";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
@@ -34,9 +34,9 @@ export const Home: React.FC = () => {
 
   const sortType = sort.sortProperty;
 
-  const onChangeCategory = (id: number) => {
+  const onChangeCategory = useCallback((id: number) => {
     dispatch(setCategoryId(id));
-  };
+  }, []);
 
   const onChangePage = (page: number) => {
     dispatch(setCurrentPage(page));
@@ -109,7 +109,7 @@ export const Home: React.FC = () => {
 
       return false;
     })
-    .map((pizza: any) => <PizzaBlock {...pizza} />);
+    .map((pizza: any) => <PizzaBlock key={pizza.id} {...pizza} />);
   const skeletons = [...new Array(6)].map((_, index) => (
     <Skeleton key={index} />
   ));
