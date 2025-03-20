@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import { CartItem } from "../components/CartItem";
+import { CartItemBlock } from "../components/CartItem";
 import { clearItems, selectCart } from "../redux/slices/cartSlice";
 import { CartEmpty } from "../components/CartEmpty";
 
@@ -102,7 +102,7 @@ export const Cart: React.FC = () => {
         </div>
         <div className="content__items">
           {items.map((item: any) => (
-            <CartItem key={item.id} {...item} />
+            <CartItemBlock key={item.id} {...item} />
           ))}
         </div>
         <div className="cart__bottom">
@@ -118,7 +118,7 @@ export const Cart: React.FC = () => {
           </div>
           <div className="cart__bottom-buttons">
             <Link
-              tp="/"
+              to="/"
               className="button button--outline button--add go-back-btn"
             >
               <svg

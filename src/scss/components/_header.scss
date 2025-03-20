@@ -50,8 +50,7 @@
 
   &__search {
     @media (max-width: 992px) {
-      order: 3; // Помещаем в конец
-      width: 100%;
+      order: 3;
       margin-top: 20px;
     }
   }
