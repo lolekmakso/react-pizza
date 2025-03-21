@@ -35,7 +35,7 @@ export const FullPizza: React.FC = () => {
 
   return (
     <div className="container">
-      <img src={`../../../${pizza.imageUrl}`} alt="Pizza" />
+      <img src={`${process.env.PUBLIC_URL}${pizza.imageUrl}`} alt="Pizza" />
       <h2>{pizza.title}</h2>
       <h4>{pizza.price} ₴</h4>
       <Link to="/">
