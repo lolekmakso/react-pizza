@@ -9,7 +9,7 @@
     li {
       &.selected {
         a {
-          background-color: #fe5f1e;
+          background-color: #de3b3b;
           color: #fff;
         }
       }
@@ -20,12 +20,12 @@
         align-items: center;
         width: 45px;
         height: 45px;
-        border: 1px solid #fe5f1e;
+        border: 1px solid #de3b3b;
         border-radius: 50%;
         cursor: pointer;
 
         &:hover {
-          background-color: #fe5f1e;
+          background-color: #de3b3b;
           color: #fff;
         }
       }

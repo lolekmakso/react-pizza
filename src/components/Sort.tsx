@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectSort,
-  setSort,
-  SortPropertyEnum,
-} from "../redux/slices/filterSlice";
+import { SortPropertyEnum } from "../redux/filter/types";
+import { selectSort } from "../redux/filter/selectors";
+import { setSort } from "../redux/filter/slice";
 
 type SortItem = {
   name: string;
@@ -12,12 +10,12 @@ type SortItem = {
 };
 
 export const list: SortItem[] = [
-  { name: "популярности(DESC)", sortProperty: SortPropertyEnum.RATING_DESC },
-  { name: "популярности(ASC)", sortProperty: SortPropertyEnum.RATING_ASC },
-  { name: "цене(DESC)", sortProperty: SortPropertyEnum.PRICE_DESC },
-  { name: "цене(ASC)", sortProperty: SortPropertyEnum.PRICE_ASC },
-  { name: "алфавиту(DESC)", sortProperty: SortPropertyEnum.TITLE_DESC },
-  { name: "алфавиту(ASC)", sortProperty: SortPropertyEnum.TITLE_ASC },
+  { name: "популярністю (DESC)", sortProperty: SortPropertyEnum.RATING_DESC },
+  { name: "популярністю (ASC)", sortProperty: SortPropertyEnum.RATING_ASC },
+  { name: "ціною (DESC)", sortProperty: SortPropertyEnum.PRICE_DESC },
+  { name: "ціною (ASC)", sortProperty: SortPropertyEnum.PRICE_ASC },
+  { name: "алфавітом (DESC)", sortProperty: SortPropertyEnum.TITLE_DESC },
+  { name: "алфавітом (ASC)", sortProperty: SortPropertyEnum.TITLE_ASC },
 ];
 
 export function SortPopup() {
@@ -61,7 +59,7 @@ export function SortPopup() {
             fill="#2C2C2C"
           />
         </svg>
-        <b>Сортировка по:</b>
+        <b>Сортування за:</b>
         <span onClick={() => setOpen(!open)}>{sort.name}</span>
       </div>
       {open && (

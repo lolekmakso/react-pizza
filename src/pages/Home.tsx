@@ -3,24 +3,22 @@ import qs from "qs";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
-import {
-  FilterSliceState,
-  selectFilter,
-  setCategoryId,
-  setCurrentPage,
-  setFilters,
-} from "../redux/slices/filterSlice";
 import { Categories } from "../components/Categories";
 import { list, SortPopup } from "../components/Sort";
 import { PizzaBlock } from "../components/PizzaBlock/PizzaBlock";
 import { Skeleton } from "../components/PizzaBlock/Skeleton";
 import { Pagination } from "../components/Pagination/Pagination";
-import {
-  fetchPizzas,
-  SearchPizzaParams,
-  selectPizzaData,
-} from "../redux/slices/pizzaSlise";
+
 import { useAppDispatch } from "../redux/store";
+import { selectFilter } from "../redux/filter/selectors";
+import { selectPizzaData } from "../redux/pizza/selectors";
+import {
+  setCategoryId,
+  setCurrentPage,
+  setFilters,
+} from "../redux/filter/slice";
+import { fetchPizzas } from "../redux/pizza/asyncActions";
+import { SearchPizzaParams } from "../redux/pizza/types";
 
 export const Home: React.FC = () => {
   const navigate = useNavigate();
@@ -34,9 +32,12 @@ export const Home: React.FC = () => {
 
   const sortType = sort.sortProperty;
 
-  const onChangeCategory = useCallback((id: number) => {
-    dispatch(setCategoryId(id));
-  }, []);
+  const onChangeCategory = useCallback(
+    (id: number) => {
+      dispatch(setCategoryId(id));
+    },
+    [dispatch]
+  );
 
   const onChangePage = (page: number) => {
     dispatch(setCurrentPage(page));
@@ -83,14 +84,14 @@ export const Home: React.FC = () => {
       dispatch(
         setFilters({
           searchValue: params.search ?? "",
-          categoryId: Number(params.category),
-          currentPage: Number(params.currentPage),
+          categoryId: Number(params.category) || 0,
+          currentPage: Number(params.currentPage) || 1,
           sort: sort || list[0],
         })
       );
       isSearch.current = true;
     }
-  }, []);
+  }, [dispatch]);
 
   //если был первый рендер, то запрашиваем пиццы
   useEffect(() => {
@@ -119,13 +120,13 @@ export const Home: React.FC = () => {
         <Categories value={categoryId} onChangeCategory={onChangeCategory} />
         <SortPopup />
       </div>
-      <h2 className="content__title">Все пиццы</h2>
+      <h2 className="content__title">Всі піци</h2>
       {status === "error" ? (
         <div className="content__error-info">
           <h2>
-            Ошибочка <span>😕</span>
+            Помилочка <span>😕</span>
           </h2>
-          <p>К сожалению не удалось получить пиццы</p>
+          <p>На жаль, не вдалося отримати піци</p>
         </div>
       ) : (
         <div className="content__items">

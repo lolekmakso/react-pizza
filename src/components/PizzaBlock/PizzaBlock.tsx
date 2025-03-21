@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import {
-  addItem,
-  CartItem,
-  selectCartItemById,
-} from "../../redux/slices/cartSlice";
 import { Link } from "react-router";
+import { selectCartItemById } from "../../redux/cart/selectors";
+import { CartItem } from "../../redux/cart/types";
+import { addItem } from "../../redux/cart/slice";
 
-const typeNames = ["тонкое", "традиционное"];
+const typeNames = ["тонке", "традиційне"];
 
 type PizzaBlockProps = {
   id: string;
@@ -79,7 +77,7 @@ export const PizzaBlock: React.FC<PizzaBlockProps> = ({
         </ul>
       </div>
       <div className="pizza-block__bottom">
-        <div className="pizza-block__price">от {price} ₽</div>
+        <div className="pizza-block__price">від {price} ₴</div>
         <button
           onClick={onClickAdd}
           className="button button--outline button--add"
@@ -96,7 +94,7 @@ export const PizzaBlock: React.FC<PizzaBlockProps> = ({
               fill="white"
             />
           </svg>
-          <span>Добавить</span>
+          <span>Додати</span>
           {addedCount > 0 && <i>{addedCount}</i>}
         </button>
       </div>

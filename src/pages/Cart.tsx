@@ -1,8 +1,9 @@
 import { Link } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { CartItemBlock } from "../components/CartItem";
-import { clearItems, selectCart } from "../redux/slices/cartSlice";
 import { CartEmpty } from "../components/CartEmpty";
+import { selectCart } from "../redux/cart/selectors";
+import { clearItems } from "../redux/cart/slice";
 
 export const Cart: React.FC = () => {
   const dispatch = useDispatch();
@@ -97,7 +98,7 @@ export const Cart: React.FC = () => {
               ></path>
             </svg>
 
-            <span>Очистить корзину</span>
+            <span>Очистити кошик</span>
           </div>
         </div>
         <div className="content__items">
@@ -109,11 +110,11 @@ export const Cart: React.FC = () => {
           <div className="cart__bottom-details">
             <span>
               {" "}
-              Всего пицц: <b>{totralCount} шт.</b>{" "}
+              Всього піц: <b>{totralCount} шт.</b>{" "}
             </span>
             <span>
               {" "}
-              Сумма заказа: <b>{totalPrice} ₽</b>{" "}
+              Сума замовлення: <b>{totalPrice} ₴</b>{" "}
             </span>
           </div>
           <div className="cart__bottom-buttons">
@@ -137,10 +138,10 @@ export const Cart: React.FC = () => {
                 ></path>
               </svg>
 
-              <span>Вернуться назад</span>
+              <span>Назад</span>
             </Link>
             <div className="button pay-btn">
-              <span>Оплатить сейчас</span>
+              <span>Оплатити зараз</span>
             </div>
           </div>
         </div>
